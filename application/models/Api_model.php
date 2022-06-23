@@ -26,10 +26,10 @@ class Api_model extends CI_Model
         * WOLF, 2019 03 23, 12:04
         * */
         $this->db->where('username', $username);
-        // $this->db->where('password', sha1($password));
-        $this->db->where('password', $password);
+        $this->db->where('password', sha1($password));
+        // $this->db->where('password', $password);
         $roles = array(1,2,3);
-        $this->db->where_in('role_id', $roles);// Login for department admin and teacher only
+        $this->db->where_in('role_id', $roles);
         $this->db->select('user_id,role_id, username');
         $user = $this->db->get('tbl_users')->row();
         

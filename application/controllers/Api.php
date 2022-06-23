@@ -65,7 +65,7 @@ class Api extends CI_Controller
     public
     function index()
     {
-        $this->send_response(date('H:i:s d-m-Y'), true, 'Login2 School Admin :)');
+        $this->send_response(date('H:i:s d-m-Y'), true, 'LBS Connect :)');
     }
 
     public

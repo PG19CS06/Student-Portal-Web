@@ -8,7 +8,7 @@ class Home_model extends CI_Model
 	 $this->db->select('*');
 	 $this->db->from('tbl_users');
 	 $this->db->where('username',$username);
-	 $this->db->where('password',$password);
+	 $this->db->where('password',sha1($password));
 	 $data=$this->db->get()->result_array();
 	 return $data;
 	}

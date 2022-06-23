@@ -8,24 +8,8 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$this->load->view('home');
-/* 		if ($this->sesssion->has_userdata('username') && $this->sesssion->has_userdata('user_id')) {
-			$user_id = $this->sesssion->userdata('user_id');
-			switch ($user_id) {
+	}
 
-				case 1:
-					// $this->load->view('admin/admin.php');
-					$this->load->view('dashboard.php');
-					break;
-				case 2:
-					$this->load->view('dashboard.php');
-					break;
-				case 3:
-					$this->load->view('dashboard.php');
-					break;
-			}
-		} else
-			$this->load->view('home');
- */	}
 	public function login_check()
 	{
 
@@ -37,36 +21,37 @@ class Home extends CI_Controller
 
 		//$this->session->set_userdata('username',$username);
 
-		if (count($data) > 0) {
 
+		if (count($data) > 0) {$row = $data[0];
+			switch ($row['role_id']) {
 
-			foreach ($data as $row) {
-				// $this->session->set_userdata('username', $row['username']);
-				// $this->session->set_userdata('user_id', $row['user_id']);
-				switch ($row['role_id']) {
-
-					case 1:
-						// $this->session->set_userdata('admin_username', $row['username']);
-						// $this->session->set_userdata('admin_user_id', $row['user_id']);
-						// $this->load->view('admin/admin.php');
-						$this->load->view('dashboard.php');
-						break;
-					case 2:
-						// $this->session->set_userdata('teacher_username', $row['username']);
-						// $this->session->set_userdata('teacher_user_id', $row['user_id']);
-						$this->load->view('dashboard.php');
-						break;
-					case 3:
-						// $this->session->set_userdata('student_username', $row['username']);
-						// $this->session->set_userdata('student_user_id', $row['user_id']);
-						$this->load->view('dashboard.php');
-						break;
-				}
+				case 1:
+					// $this->session->set_userdata('admin_username', $row['username']);
+					// $this->session->set_userdata('admin_user_id', $row['user_id']);
+					// $this->load->view('admin/admin.php');
+					$this->dashboard();
+					break;
+				case 2:
+					// $this->session->set_userdata('teacher_username', $row['username']);
+					// $this->session->set_userdata('teacher_user_id', $row['user_id']);
+					$this->dashboard();
+					break;
+				case 3:
+					// $this->session->set_userdata('student_username', $row['username']);
+					// $this->session->set_userdata('student_user_id', $row['user_id']);
+					$this->dashboard();
+					break;
 			}
+
 		} else {
 			// $this->load->view('error');
-			$this->load->view('home');
+			$this->index();
 			// redirect(base_url(), 'refresh');
 		}
+	}
+
+	public function dashboard()
+	{
+		$this->load->view('dashboard.php');
 	}
 }
