@@ -75,10 +75,17 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'mysql',
-	'database' => 'student_portal',
+	//heroku settings
+	'hostname' => 'remotemysql.com',
+	'username' => 'G3hMlp3O6S',
+	'password' => '6oHTQbNkdo',
+	'database' => 'G3hMlp3O6S',
+
+	//local settings
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => 'mysql',
+	// 'database' => 'student_portal',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
